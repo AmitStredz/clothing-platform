@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaSearch, FaShoppingCart, FaHeart, FaPhoneAlt } from 'react-icons/fa';
+import { FaSearch, FaShoppingCart, FaHeart, FaPhoneAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const categories = {
     "Women's": ['Ethnic Wear', 'Western Wear', 'Fusion Collection', 'Accessories'],
@@ -28,14 +29,12 @@ const Header = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-playfair font-bold bg-gradient-to-r from-emerald-800 to-emerald-600 bg-clip-text text-transparent">
+              <span className="text-xl md:text-2xl font-playfair font-bold bg-gradient-to-r from-emerald-800 to-emerald-600 bg-clip-text text-transparent">
                 RAMADAN COLLECTIONS
               </span>
-              {/* <span className="text-sm font-medium text-emerald-700 border-l-2 border-emerald-200 pl-2">
-                LUXURY FABRICS
-              </span> */}
             </Link>
             
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8 text-sm font-medium">
               {Object.keys(categories).map((category) => (
                 <div
@@ -72,12 +71,12 @@ const Header = () => {
               ))}
             </div>
 
-            <div className="flex items-center space-x-6">
-              <div className="relative group">
+            <div className="flex items-center space-x-4 md:space-x-6">
+              <div className="relative group hidden md:block">
                 <input
                   type="text"
                   placeholder="Search designs..."
-                  className="w-64 px-4 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+                  className="w-48 md:w-64 px-4 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
                 />
                 <FaSearch className="absolute right-3 top-3 text-gray-400 group-hover:text-emerald-600 transition-colors" />
               </div>
@@ -92,22 +91,62 @@ const Header = () => {
                   0
                 </span>
               </Link>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden text-gray-600 hover:text-emerald-600 transition-colors"
+              >
+                {isMobileMenuOpen ? <FaTimes className="text-xl" /> : <FaBars className="text-xl" />}
+              </button>
             </div>
           </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="lg:hidden"
+              >
+                <div className="py-4 space-y-4">
+                  {Object.keys(categories).map((category) => (
+                    <div key={category} className="space-y-2">
+                      <h3 className="text-lg font-medium text-gray-700">{category}</h3>
+                      <div className="grid grid-cols-2 gap-2">
+                        {categories[category].map((subCategory) => (
+                          <Link
+                            key={subCategory}
+                            to={`/category/${subCategory.toLowerCase().replace(' ', '-')}`}
+                            className="text-sm text-gray-600 hover:text-emerald-700"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {subCategory}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </header>
 
-      {/* Secondary Navigation - Mobile Friendly */}
-      <div className="lg:hidden overflow-x-auto scrollbar-hide">
-        <div className="flex space-x-4 px-4 py-3 bg-gray-50">
-          {Object.keys(categories).map((category) => (
-            <button
-              key={category}
-              className="whitespace-nowrap px-4 py-1 rounded-full text-sm font-medium text-gray-600 hover:text-emerald-700 hover:bg-emerald-50 transition-colors"
-            >
-              {category}
-            </button>
-          ))}
+      {/* Mobile Search Bar */}
+      <div className="lg:hidden bg-white border-b">
+        <div className="container mx-auto px-4 py-3">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search designs..."
+              className="w-full px-4 py-2 rounded-full text-sm border border-gray-200 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            />
+            <FaSearch className="absolute right-3 top-3 text-gray-400" />
+          </div>
         </div>
       </div>
     </>

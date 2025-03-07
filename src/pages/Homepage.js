@@ -174,10 +174,10 @@ const Homepage = () => {
       </div>
 
       {/* Trending Products */}
-      <div className="container mx-auto px-4 py-16">
+      {/* <div className="container mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold mb-8 text-gray-800">New Arrivals</h2>
         <ProductList />
-      </div>
+      </div> */}
 
       {/* Newsletter */}
       <div className="bg-emerald-900 text-white py-16">

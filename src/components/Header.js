@@ -29,11 +29,11 @@ const Header = () => {
           <div className="flex items-center justify-between h-20">
             <Link to="/" className="flex items-center space-x-2">
               <span className="text-2xl font-playfair font-bold bg-gradient-to-r from-emerald-800 to-emerald-600 bg-clip-text text-transparent">
-                TEXTILE
+                RAMADAN COLLECTIONS
               </span>
-              <span className="text-sm font-medium text-emerald-700 border-l-2 border-emerald-200 pl-2">
+              {/* <span className="text-sm font-medium text-emerald-700 border-l-2 border-emerald-200 pl-2">
                 LUXURY FABRICS
-              </span>
+              </span> */}
             </Link>
             
             <div className="hidden lg:flex items-center space-x-8 text-sm font-medium">

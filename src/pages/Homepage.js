@@ -54,50 +54,7 @@ const Homepage = () => {
         >
           Shop By Category
         </motion.h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              title: 'Women\'s Fashion',
-              image: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b',
-              link: '/womens'
-            },
-            {
-              title: 'Men\'s Collection',
-              image: 'https://images.unsplash.com/photo-1617137968427-85924c800a22',
-              link: '/mens'
-            },
-            {
-              title: 'Kids\' Wear',
-              image: 'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8',
-              link: '/kids'
-            }
-          ].map((collection, index) => (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-              key={collection.title}
-              className="group relative h-[450px] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
-            >
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
-              <img 
-                src={collection.image} 
-                alt={collection.title}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
-                <h3 className="text-3xl font-playfair font-semibold text-white mb-4">{collection.title}</h3>
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white/90 text-gray-900 px-6 py-3 rounded-full text-sm hover:bg-white transition-colors shadow-lg"
-                >
-                  Discover More
-                </motion.button>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+       
       </div>
 
       {/* Featured Collections with Glass Effect */}

@@ -7,12 +7,12 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const categories = {
-    "Women's": ['Ethnic Wear', 'Western Wear', 'Fusion Collection', 'Accessories'],
-    "Men's": ['Traditional', 'Formal Wear', 'Casual Collection', 'Designer Kurtas'],
-    "Kids'": ['Boys Wear', 'Girls Wear', 'Party Wear', 'Ethnic Collection'],
-    "Trending": ['New Arrivals', 'Best Sellers', 'Festival Edit', 'Designer Picks']
-  };
+  // const categories = {
+  //   "Women's": ['Ethnic Wear', 'Western Wear', 'Fusion Collection', 'Accessories'],
+  //   "Men's": ['Traditional', 'Formal Wear', 'Casual Collection', 'Designer Kurtas'],
+  //   "Kids'": ['Boys Wear', 'Girls Wear', 'Party Wear', 'Ethnic Collection'],
+  //   "Trending": ['New Arrivals', 'Best Sellers', 'Festival Edit', 'Designer Picks']
+  // };
 
   return (
     <>
